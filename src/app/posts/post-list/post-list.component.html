@@ -1,0 +1,36 @@
+<main class="flex flex-col gap-8 items-center px-16 py-8">
+  <app-post-form class="w-full max-w-4xl shadow-2xl" [isNewPost]="true" (submitPost)="handleCreatePost($event)"></app-post-form>
+
+  @for (post of posts; track post) {
+    <div class="w-full max-w-4xl p-10 bg-zinc-800 rounded-lg flex flex-col gap-6 shadow-2xl border border-zinc-800 hover:border-sky-800">
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-zinc-100 font-bold text-sm">{{ author }}</h2>
+            <h3 class="text-zinc-400 text-sm">{{ authorEmail }}</h3>
+          </div>
+  
+          <div class="flex space-x-4">
+            <app-post-form [isNewPost]="false" [post]="post" (submitPost)="handleUpdatePost(post.id, $event)"></app-post-form>
+  
+            <button (click)="handleDeletePost(post.id)" class="size-4">
+              <lucide-icon [img]="Trash" class="text-zinc-400 hover:text-rose-400" size="16"></lucide-icon>
+            </button>
+          </div>
+        </div>
+    
+        <div class="space-y-2">
+          <h4 class="text-zinc-200 font-bold text-lg">{{ post.title }}</h4>
+  
+          <p class="text-zinc-200">
+            {{ post.body }}
+          </p>
+        </div>
+      </div>
+      
+      <hr class="border border-zinc-700">
+
+      <app-post-comments [post]="post"></app-post-comments>
+    </div>
+  }
+</main>

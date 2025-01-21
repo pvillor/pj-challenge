@@ -1,0 +1,37 @@
+@if (isNewComment) {
+
+  <form class="w-full max-w-4xl bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="createCommentForm" (ngSubmit)="handleSubmit()">      
+    <div class="flex flex-col gap-4">
+      <label for="body" class="text-zinc-200 text-sm font-bold">Deixe seu feedback</label>
+
+      <textarea id="body" placeholder="Escreva um comentário..." class="bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body"></textarea>
+    </div>
+
+    <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 hover:bg-sky-950 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed rounded-md" [disabled]="!createCommentForm.valid">
+      <span class="text-zinc-200">Comentar</span>
+    </button>
+  </form>
+
+} @else if (isModalOpen) {
+
+  <div class="fixed inset-0 flex items-center justify-center bg-opacity-50 p-5 bg-black">
+    <form class="w-96 p-8 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editCommentForm" (ngSubmit)="handleSubmit()">      
+      <div class="flex flex-col gap-4">
+        <label for="body" class="text-zinc-200 text-sm font-bold">Editar comentário</label>
+  
+        <textarea id="body" placeholder="Escreva um comentário..."  class="min-h-40 min-w-60 bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body"></textarea>
+      </div>
+  
+      <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 hover:bg-sky-950 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed rounded-md" [disabled]="!editCommentForm.valid">
+        <span class="text-zinc-200">Salvar</span>
+      </button>
+    </form>
+  </div>
+
+} @else {
+
+  <button class="size-4" (click)="handleOpenEditModal()">
+    <lucide-icon [img]="Pencil" class="text-zinc-400 hover:text-sky-600" size="16"></lucide-icon>
+  </button>
+
+}

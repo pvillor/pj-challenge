@@ -1,0 +1,49 @@
+@if (isNewPost) {
+
+  <form class="p-5 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="createPostForm" (ngSubmit)="handleSubmit()">
+    <h3 class="text-zinc-200 font-bold">Novo post</h3>
+  
+    <div class="flex flex-col gap-1">
+      <label for="title" class="text-zinc-200">Título</label>
+      <input id="title" placeholder="Digite o título" class="bg-zinc-900 text-zinc-300 p-2 rounded-md placeholder:text-zinc-600" formControlName="title" />
+    </div>
+  
+    <div class="flex flex-col gap-1">
+      <label for="body" class="text-zinc-200">Conteúdo</label>
+      <textarea id="body" placeholder="Digite o conteúdo do post..." class="bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body" ></textarea>
+    </div>
+  
+    <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!createPostForm.valid">
+      <span class="text-zinc-200">Publicar</span>
+    </button>
+  </form>
+
+} @else if (isModalOpen) {
+
+  <div class="fixed inset-0 flex items-center justify-center bg-opacity-50 p-5 bg-black">
+    <form class="w-96 p-10 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editPostForm" (ngSubmit)="handleSubmit()">
+      <h3 class="text-zinc-200 font-bold">Editar post</h3>
+    
+      <div class="flex flex-col gap-1">
+        <label for="title" class="text-zinc-200">Título</label>
+        <input id="title" placeholder="Digite o título" class="bg-zinc-900 text-zinc-300 p-2 rounded-md placeholder:text-zinc-600" formControlName="title" />
+      </div>
+    
+      <div class="flex flex-col gap-1">
+        <label for="body" class="text-zinc-200">Conteúdo</label>
+        <textarea id="body" placeholder="Digite o conteúdo do post..." class="bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body" ></textarea>
+      </div>
+    
+      <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!editPostForm.valid">
+        <span class="text-zinc-200">Publicar</span>
+      </button>
+    </form>
+  </div>
+
+} @else {
+
+  <button class="size-4" (click)="handleOpenEditModal()">
+    <lucide-icon [img]="Pencil" class="text-zinc-400 hover:text-sky-600" size="16"></lucide-icon>
+  </button>
+
+}
