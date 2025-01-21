@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
 import { Comment } from '../../interfaces/comment.interface';
-import { LucideAngularModule, Pencil } from 'lucide-angular';
+import { LucideAngularModule, Pencil, X as XIcon } from 'lucide-angular';
 
 @Component({
   selector: 'app-comment-form',
@@ -14,6 +14,7 @@ import { LucideAngularModule, Pencil } from 'lucide-angular';
 
 export class CommentFormComponent implements OnInit {
   readonly Pencil = Pencil
+  readonly X = XIcon
 
   @Output() submitComment = new EventEmitter<{ body: string }>()
 
@@ -45,6 +46,10 @@ export class CommentFormComponent implements OnInit {
 
   handleOpenEditModal() {
     this.isModalOpen = true
+  }
+
+  handleCloseEditModal() {
+    this.isModalOpen = false
   }
 
   handleSubmit() {

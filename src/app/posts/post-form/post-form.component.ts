@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
 import { Post } from '../../interfaces/post.interface';
-import { LucideAngularModule, Pencil } from 'lucide-angular';
+import { LucideAngularModule, Pencil, X as XIcon } from 'lucide-angular';
 
 @Component({
   selector: 'app-post-form',
@@ -14,6 +14,7 @@ import { LucideAngularModule, Pencil } from 'lucide-angular';
 
 export class PostFormComponent implements OnInit {
   readonly Pencil = Pencil
+  readonly X = XIcon
 
   @Output() submitPost = new EventEmitter<{ title: string; body: string }>()
 
@@ -48,6 +49,10 @@ export class PostFormComponent implements OnInit {
 
   handleOpenEditModal() {
     this.isModalOpen = true
+  }
+
+  handleCloseEditModal() {
+    this.isModalOpen = false
   }
 
   handleSubmit() {

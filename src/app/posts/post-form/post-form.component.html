@@ -13,7 +13,7 @@
       <textarea id="body" placeholder="Digite o conteúdo do post..." class="bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body" ></textarea>
     </div>
   
-    <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!createPostForm.valid">
+    <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!createPostForm.valid || createPostForm.value.title.trim() === '' || createPostForm.value.body.trim() === ''">
       <span class="text-zinc-200">Publicar</span>
     </button>
   </form>
@@ -21,7 +21,9 @@
 } @else if (isModalOpen) {
 
   <div class="fixed inset-0 flex items-center justify-center bg-opacity-50 p-5 bg-black">
-    <form class="w-96 p-10 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editPostForm" (ngSubmit)="handleSubmit()">
+    <form class="relative w-96 p-10 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editPostForm" (ngSubmit)="handleSubmit()">
+      <lucide-icon [img]="X" class="absolute right-0 top-0 mt-2 mr-2 text-zinc-200 hover:cursor-pointer hover:scale-110" size="16" (click)="handleCloseEditModal()"></lucide-icon>
+
       <h3 class="text-zinc-200 font-bold">Editar post</h3>
     
       <div class="flex flex-col gap-1">
@@ -33,9 +35,9 @@
         <label for="body" class="text-zinc-200">Conteúdo</label>
         <textarea id="body" placeholder="Digite o conteúdo do post..." class="bg-zinc-900 text-zinc-300 p-4 rounded-md placeholder:text-zinc-600" formControlName="body" ></textarea>
       </div>
-    
-      <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!editPostForm.valid">
-        <span class="text-zinc-200">Publicar</span>
+      
+      <button type="submit" class="ml-auto px-4 py-2 bg-sky-900 disabled:hover:bg-sky-900 disabled:hover:cursor-not-allowed hover:bg-sky-950 rounded-md" [disabled]="!editPostForm.valid || editPostForm.value.title.trim() === '' || editPostForm.value.body.trim() === ''">
+        <span class="text-zinc-200">Salvar</span>
       </button>
     </form>
   </div>
