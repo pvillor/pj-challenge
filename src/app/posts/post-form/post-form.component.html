@@ -1,6 +1,6 @@
 @if (isNewPost) {
 
-  <form class="p-5 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="createPostForm" (ngSubmit)="handleSubmit()">
+  <form class="p-3 sm:p-5 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="createPostForm" (ngSubmit)="handleSubmit()">
     <h3 class="text-zinc-200 font-bold">Novo post</h3>
   
     <div class="flex flex-col gap-1">
@@ -21,7 +21,7 @@
 } @else if (isModalOpen) {
 
   <div class="fixed inset-0 flex items-center justify-center bg-opacity-50 p-5 bg-black">
-    <form class="relative w-96 p-10 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editPostForm" (ngSubmit)="handleSubmit()">
+    <form class="relative w-96 p-4 sm:p-10 bg-zinc-800 rounded-lg flex flex-col gap-4" [formGroup]="editPostForm" (ngSubmit)="handleSubmit()">
       <lucide-icon [img]="X" class="absolute right-0 top-0 mt-2 mr-2 text-zinc-200 hover:cursor-pointer hover:scale-110" size="16" (click)="handleCloseEditModal()"></lucide-icon>
 
       <h3 class="text-zinc-200 font-bold">Editar post</h3>

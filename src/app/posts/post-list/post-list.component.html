@@ -1,8 +1,8 @@
-<main class="flex flex-col gap-8 items-center px-16 py-8">
+<main class="flex flex-col gap-8 items-center px-2 sm:px-16 py-8">
   <app-post-form class="w-full max-w-4xl shadow-2xl" [isNewPost]="true" (submitPost)="handleCreatePost($event)"></app-post-form>
 
   @for (post of posts; track post) {
-    <div class="w-full max-w-4xl p-10 bg-zinc-800 rounded-lg flex flex-col gap-6 shadow-2xl border border-zinc-800 hover:border-sky-800">
+    <div class="w-full max-w-4xl p-5 md:p-10 bg-zinc-800 rounded-lg flex flex-col gap-6 shadow-2xl border border-zinc-800 hover:border-sky-800">
       <div class="space-y-4">
         <div class="flex justify-between items-center">
           <div>
